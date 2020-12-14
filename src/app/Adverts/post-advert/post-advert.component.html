@@ -1,0 +1,164 @@
+<app-home-header></app-home-header>
+
+<section class="addAdvertSection">
+    <div class="row">
+        <div class="container">
+
+            <form class="advertForm" [formGroup]="addAdvertForm">
+                <div class="text-center">
+                    <h1>Add Advert</h1>
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                    <label for="category">Category</label>
+                    <input formControlName="Category"
+                     id="category" class="form-control"  type="text" placeholder="Category"> 
+
+                     <div *ngIf="GetInputStatues('Category')!.invalid" class="text-danger">
+                        Category is a required field.
+                    </div>
+                    </div>
+                     
+                    <div class="col">
+                    <label for="sub-category">Sub-Category
+                        <span class="text-danger"> If it is exist</span>
+                    </label>
+                    <input formControlName="Sub-Category" 
+                     id="sub-category" class="form-control"  type="text" placeholder="Sub-Category">
+                    </div>
+                </div>
+        
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input formControlName="Title"
+                     id="title" class="form-control"  type="text"
+                     placeholder="Product Title">
+                     <div *ngIf="GetInputStatues('Title')!.invalid" class="text-danger">
+                        Title is a required field.
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea formControlName="Description"
+                     id="description" class="form-control"  rows="3"
+                     placeholder="Write your description..."></textarea>
+                     <div *ngIf="GetInputStatues('Description')!.invalid" class="text-danger">
+                        Description is a required field.
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="images">Images</label>
+                    <input formControlName="Images"
+                     id="images" class="form-control-file" type="file" 
+                     (change)="onSelectedFile($event)">
+                    
+                     <img [src]="imageSrc" *ngIf="imageSrc" style="height: 150px; width: 150px;">
+                     <div *ngIf="GetInputStatues('Images')!.invalid" class="text-danger">
+                        Images is a required field.
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="VideoLinks">Video Links
+                        <span class="text-danger"> If it is exist</span></label>
+                    <input formControlName="Video Links"
+                      id="VideoLinks" class="form-control"
+                       type="url" placeholder="e.g Youtube/My Advertise.com">
+                </div>
+
+                <div class="form-row">
+                    <div class="col">
+                    <label for="price">Price</label>
+                    <input formControlName="Price"
+                     id="price" class="form-control"  type="text" placeholder="AED"> 
+                    </div>
+                    
+                     
+                    <div class="col">
+                    <label for="condition">Condition</label>
+                    <select formControlName="Condition" id="condition" class="form-control">
+                        <option disabled selected>Choose Condition</option>
+                        <option>New</option>
+                        <option>Used</option>
+                    </select>
+                </div>
+                
+                    <div class="col">
+                        <label for="warranty">Warranty</label>
+                        <select formControlName="Warranty"
+                         id="warranty" class="form-control">
+                            <option disabled selected>Yes/No</option>
+                            <option>Yes</option>
+                            <option>No</option>
+                        </select>
+                    </div>
+                    
+                    </div>
+                    <div *ngIf="GetInputStatues('Price')!.invalid" class="text-danger">
+                        Price is a required field.
+                    </div>
+                    <div *ngIf="GetInputStatues('Condition')!.invalid" class="text-danger">
+                        Condition is a required field.
+                    </div>
+                    <div *ngIf="GetInputStatues('Warranty')!.invalid" class="text-danger">
+                        Warranty is a required field.
+                    </div>
+
+
+                    <h3 class="mt-5">
+                    <i class="fa fa-bullet-point"></i>Information about advertiser
+                    </h3>
+                        <div class="form-group">
+                            <label for="advertiserName">1:Name</label>
+                            <input formControlName="Name"
+                             id="advertiserName" type="text" class="form-control"
+                             placeholder="Advertiser Name">
+                             <div *ngIf="GetInputStatues('Name')!.invalid" class="text-danger">
+                                Name is a required field.
+                            </div>
+                             <label for="advertiserPhone">2:Phone Number</label>
+                            <input formControlName="Phone Number"
+                              id="advertiserPhone" type="number" class="form-control"
+                             placeholder="09xxxxxxxx">
+                             <div *ngIf="GetInputStatues('Phone Number')!.invalid" class="text-danger">
+                                Phone Number is a required field.
+                            </div>
+                             <label for="emirate">3:Choose Emirate</label>
+                             <select formControlName="Choose Emirate"
+                              id="emirate" class="form-control">
+                                 <option disabled selected>Select to choose emirate</option>
+                                 <option>Abu Dhabi</option>
+                                 <option>Dubai</option>
+                                 <option>Sharjah</option>
+                                 <option>Ras Al Khimah</option>
+                                 <option>Ajman</option>
+                                 <option>Fujairah</option>
+                                 <option>Umm Al Quwain</option>
+                             </select>
+                             <div *ngIf="GetInputStatues('Choose Emirate')!.invalid"
+                              class="text-danger">
+                                Choose Emirate is a required field.
+                            </div>
+                             
+                             <label for="advertiserAdress">4:Adress in details</label>
+                             <input formControlName="Adress-in-details"
+                              id="advertiserAdress" class="form-control" type="text"
+                             placeholder="Adress">
+                             <div *ngIf="GetInputStatues('Adress-in-details')!.invalid"
+                              class="text-danger">
+                                Adress in details is a required field.
+                            </div>
+                        </div>
+                    <div class="text-center mt-3">
+                    <button type="submit" class="btn btn-primary"
+                     (click)="postAdd(addAdvertForm)">Post</button>
+                </div>
+            </form>
+            
+        </div>
+    </div>
+    
+</section>
+

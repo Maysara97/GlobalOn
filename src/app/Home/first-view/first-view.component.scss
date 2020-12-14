@@ -1,0 +1,157 @@
+#firstview{
+    background-color: #edf4f9;
+}
+#title{
+    padding: 1.5em 1em 0.5em;
+    font-size: 43px;
+    font-weight: 600;
+}
+
+#subtitle{
+    color: #96999a;
+    letter-spacing: .5px;
+    line-height: 2em;
+    margin-left: 3em;
+
+}
+#buttontitle{
+    background: linear-gradient(5deg, #ba212c, #f93a48);
+    border: none;
+    padding: 7px 35px;
+    color: #f8f9fa;
+    font-size: 16px;
+    font-family: arial;
+    font-weight: 600;
+    border-radius: 25px;
+    margin-top: 3em;
+    margin-bottom: 4em;
+}
+
+#secondview img{
+    height: 75vh;
+    margin-left: 2em;
+}
+
+@media (max-width:1319px) and (min-width:1138px){
+    #first-nav li:first-of-type {
+        margin-left: 5em;
+    }
+    #first-nav li{
+        margin-left: 2em;
+    }
+    #second-nav li {
+        margin-right: 1.2em;
+    }
+    #secondview img{
+         margin-left: 1em;
+    }
+    
+}
+@media(max-width:1137px) and (min-width:992px){
+    #first-nav li:first-of-type {
+        margin-left: 5.5em;
+    }
+    #first-nav li{
+        margin-left: .5em;
+    }
+    #second-nav li {
+        margin-right: .4em;
+    }
+    #secondview img{
+        height: 59vh;
+        margin-top: 3em;
+        margin-left: 2em;
+    }
+    #p-footer{
+        font-size: 1.2em;
+    }
+    
+}
+
+@media(max-width:991px){
+    #secondtitle{
+        display: block;
+    }
+    #secondview img{
+        display: none;
+    }
+
+    #title{
+        text-align: center !important;
+    }
+    #first-nav li:first-of-type {
+        margin-left: 5.5em;
+    }
+    #first-nav li{
+        margin-left: 5.5em;
+    }
+
+
+    #second-nav p{
+        margin-left: 5.5em;
+    }
+    #second-nav button{
+        margin-left: 5.5em;
+    }
+
+    .btn-media{
+        margin-top: 5px;
+    }
+
+    .slide-tt {
+   
+        font-size: 35px;
+      
+        padding: 5px 10px;
+
+        
+    }
+    #photo-ads{
+        display: none;
+    }
+
+    .ads-text{
+        flex: 1 0 50%;
+        max-width: 100%;
+    }
+}
+@media(max-width:992px) and (min-width:767px){
+    .card-child-one p:first-of-type,.card-child-two p:first-of-type {
+        
+        font-size: .9em;
+    }
+    .card-child-one p:nth-of-type(2),
+    .card-child-one span,
+    .card-child-two p:nth-of-type(2) {
+        
+        font-size: 10px;
+    }
+    .card-child-one button,
+    .card-child-two button{
+        font-size: 8px;
+        margin-top: 3.5em;
+    width: 90px;
+    }  
+    .card-child-two button{
+        margin-top: 6.5em !important;
+    }
+    #p-footer{
+        font-size: 1em;
+    }
+
+    #foot-icons svg{
+        width: 3vw;
+        height: 4vh;
+        padding: 3px;
+    }
+}
+@media(max-width:767px){
+    #foot-icons svg{
+
+        width:5vw;
+    }
+    #footer div h4{
+        margin-top: 2em;
+    }
+    
+}

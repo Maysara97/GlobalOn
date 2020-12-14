@@ -31,9 +31,14 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/font-awesome/css/font-awesome.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.js"
+
+            ]
           },
           "configurations": {
             "production": {
@@ -127,5 +132,8 @@
       }
     }
   },
-  "defaultProject": "GlobalOne"
+  "defaultProject": "GlobalOne",
+  "cli": {
+    "analytics": "e5998de5-f92b-4320-9ead-635f96b9ca18"
+  }
 }

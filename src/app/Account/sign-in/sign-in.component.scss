@@ -1,0 +1,129 @@
+#main-div
+{
+    margin-left: -35px;
+}
+
+#left-div{
+    height: 96vh
+
+}
+
+#left-div img{
+    height: 94vh;
+    width: 49vw;
+}
+
+#right-div{
+    height: 50vh;
+   
+}
+
+#right-div h2{
+    margin-top: 1.5em;
+    margin-bottom: 2em;
+}
+
+#color-div{
+    height: 100vh;
+    background-color: blue;
+    position: relative;
+    top: -39em;
+    background: linear-gradient(90deg, red -28%, transparent);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#color-div p{
+    font-size: 2.5em;
+    color: white;
+    font-weight: 700;
+
+}
+
+.form-control{
+    padding: 2rem 0.75rem !important;
+}
+
+#btn-sub{
+    display: block;
+    margin: auto;
+    padding: 15px 110px;
+    background: linear-gradient(5deg, #ba212c, #f93a48);
+    letter-spacing: 1px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+#btn-link{
+    
+    display: block;
+    text-align: center;
+    margin-top: 2.5em;
+    color: #6f6d6d;
+    font-weight: 600;
+
+}
+
+
+
+.btns{
+    display: flex;
+    justify-content: center;
+}
+
+.btns button{
+    background: white;
+    border: 1px solid gray;
+    padding: .5em 3em;
+    margin: 1em 1em;
+    font-size: 18px;
+    border-radius: 5px;
+}
+.btns button:first-of-type{
+    background-color: #0cb30c;
+    color: white;
+}
+
+#or{
+    color: grey;
+    font-size: 17px;
+    font-weight: 400;
+    text-align: center;
+    margin-top: 2em;
+}
+
+
+.btns button:nth-of-type(2){
+    background-color: #4267b2;
+    color: white;
+}
+
+
+@media (max-width:992px) and (min-width:767px){
+    #color-div p {
+        font-size: 2em;
+    }
+    .btns button {
+  
+        padding: .5em 1em;
+        margin: 1em 1em;
+
+    }
+    
+}
+
+@media (max-width:767px){
+   #left-div{
+       display: none
+   }
+   #right-div{
+       margin-left: 1em;
+   }
+   .btns button {
+  
+    padding: .5em 1em;
+    margin: 1em 1em;
+
+}
+}

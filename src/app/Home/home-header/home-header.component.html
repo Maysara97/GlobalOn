@@ -1,0 +1,107 @@
+
+<!-- The Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <p class="navbar-brand fnl">Gl<span class="red">o</span>bal</p>
+    <button class="navbar-toggler" type="button" 
+    data-toggle="collapse" data-target="#navbarSupportedContent" 
+    aria-controls="navbarSupportedContent"  aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto" id="first-nav">
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="['/home-main']">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Classified</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Real-E-State</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Small Business</a>
+        </li>
+
+        <!--Sign in & Sign Up Buttons-->
+          <li *ngIf = "user==null" class="nav-item btn-media">
+            <button class="btn btn-outline-danger" (click)="goToSignIn()">Sign In</button>
+          </li>
+          <li *ngIf = "user==null" class="nav-item btn-media">
+              <button class="btn btn-outline-danger" (click)="goToSignUp()"> Register</button>
+          </li>
+        
+        <!--Authnticated user options-->
+          <div *ngIf="user!=null" class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button"
+             id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="name-title-d5"><i class="fa fa-user"></i> {{user}}  </span>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item  active-item" href="#"><i class="fa fa-user"></i> Profile</a>
+              <a class="dropdown-item" href="#"><i class="fa fa-bell"></i> Notification</a>
+              <a class="dropdown-item" [routerLink]="['/my-adds']">
+                <i class="fa fa-bullhorn"></i> My Ads</a>
+              <a class="dropdown-item" href="#"><i class="fa fa-heart"></i> My Favourite</a>
+              <a class="dropdown-item" href="#"><i class="fa fa-comments"></i> Chats</a>
+              <a class="dropdown-item" href="#"><i class="fa fa-cogs"></i> Setting</a>
+              <a class="dropdown-item" (click)="Logout()" style="cursor: pointer">
+                <span class="fa fa-sign-out"></span> Logout</a>
+            </div>
+          </div>
+        
+        
+      </ul>
+
+    </div>
+  </nav>
+
+  <!--Secound header bar [Categories Part]-->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <p class="navbar-brand fnl" id="secondtitle">
+        <span class="red">F</span>ea<span class="red">tu</span>res</p>
+    <button class="navbar-toggler" type="button" 
+    data-toggle="collapse" data-target="#navbar2"
+     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbar2">
+      <ul class="navbar-nav mr-auto" id="second-nav">
+        <li class="nav-item">
+          <p><i class="fa fa-motorcycle"></i> Motors</p>
+        </li>
+        <li class="nav-item">
+          <p><i class="fa fa-graduation-cap"></i> Learning</p>
+        </li>
+        <li class="nav-item">
+          <p><i class="fa fa-building"></i>States</p>
+        </li>
+        <li class="nav-item">
+          <p><i class="fa fa-car"></i> cars</p>
+        </li>
+        <li class="nav-item">
+          <p><i class="fa fa-gamepad"></i> Toys</p>
+        </li>
+        <li class="nav-item">
+         <p><i class="fa fa-user-secret"></i> Fashion</p>
+        </li>
+        <li class="nav-item">
+          <p><i class="fa fa-battery"></i> Electorices</p>
+        </li>
+        <li class="nav-item">
+          <p><i class="fa fa-laptop"></i>Laptops</p>
+        </li>
+        <li class="nav-item">
+          <p><i class="fa fa-mobile"></i> Phone</p>
+        </li>
+        <li class="nav-item">
+          <p><i class="fa fa-paw"></i> Animals</p>
+        </li>
+        <li class="nav-item">
+          <button id="snb" (click)="goToAdverts()">Post An Ads</button>
+        </li>
+      </ul>
+     
+    </div>
+  </nav>
