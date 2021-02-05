@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
+  noDisplay = false;
   constructor() { }
-
+  
   ngOnInit(): void {
+    
+    if(localStorage.getItem('footer') == 'no'){
+      this.noDisplay = false;
+    }
   }
 
 }
