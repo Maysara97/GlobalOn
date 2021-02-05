@@ -1,0 +1,14 @@
+a {
+    color: #454f5a !important;
+}
+
+a:hover{
+    color: #dc3545 !important;
+    transition: 0.5s;
+    text-decoration: none !important;
+}
+
+#foot-icons a{
+    margin-right: 12px;
+    font-size: 25px;
+}

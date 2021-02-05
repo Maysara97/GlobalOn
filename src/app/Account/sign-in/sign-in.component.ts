@@ -90,6 +90,7 @@ export class SignInComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    localStorage.setItem('footer','no')
     this.authService.authState.subscribe((user) =>{
       this.user = user;
       if (user!=null){
