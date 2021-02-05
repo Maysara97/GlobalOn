@@ -1,0 +1,42 @@
+.textUnderline{
+    border-bottom:14px solid #d52c38; 
+    width: 40%;
+
+}
+
+
+
+.slide-tt {
+    display: flex;
+    font-weight: 600;
+    font-size: 45px;
+    border-left: 0px !important;
+    padding: 12px 10px;
+    text-align: left !important;
+    margin-bottom: 0.5em;
+}
+
+.card-p{
+    display: flex;
+}
+.card-child-one{
+    width: 50%;
+    
+    height: 25vh;
+    display: flex;
+     
+    flex-direction: column;
+    align-items: flex-start !important;
+    margin-left: 5px !important;
+}
+
+.card-child-two{
+    width: 50%;
+    
+    height: 30vh;
+    display: flex;
+    
+    flex-direction: column;
+    align-items: flex-end !important;
+    margin-right: 5px !important;
+}

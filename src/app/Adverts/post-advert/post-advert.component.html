@@ -11,8 +11,12 @@
                 <div class="form-row">
                     <div class="col">
                     <label for="category">Category</label>
-                    <input formControlName="Category"
-                     id="category" class="form-control"  type="text" placeholder="Category"> 
+                    <select formControlName='Category' 
+                    class="form-control" id="category" (change)="fillSubCategories($event.target)">
+                    <option value="" disabled selected hidden>Choose Category</option>
+                    <option *ngFor="let cat of categories" [value] = "cat.Id">{{cat.Name}}</option>
+                      </select>
+                  
 
                      <div *ngIf="GetInputStatues('Category')!.invalid" class="text-danger">
                         Category is a required field.
@@ -22,16 +26,19 @@
                     <div class="col">
                     <label for="sub-category">Sub-Category
                         <span class="text-danger"> If it is exist</span>
-                    </label>
-                    <input formControlName="Sub-Category" 
+                    </label> 
+                    <select formControlName="Sub-Category" [disabled]="!hasSubCategory" 
                      id="sub-category" class="form-control"  type="text" placeholder="Sub-Category">
+                     <option value="" disabled selected hidden>Choose Sub-Category</option>
+                     <option *ngFor="let sub of subCategory" [value]="sub.Id">{{sub.Name}}</option>
+                    </select>
                     </div>
                 </div>
         
                 <div class="form-group">
                     <label for="title">Title</label>
                     <input formControlName="Title"
-                     id="title" class="form-control"  type="text"
+                      class="form-control"  type="text"
                      placeholder="Product Title">
                      <div *ngIf="GetInputStatues('Title')!.invalid" class="text-danger">
                         Title is a required field.
@@ -51,10 +58,11 @@
                 <div class="form-group">
                     <label for="images">Images</label>
                     <input formControlName="Images"
-                     id="images" class="form-control-file" type="file" 
-                     (change)="onSelectedFile($event)">
+                     id="images" class="form-control-file" type="file"  
+                     (change)="onSelectedFile($event)"  multiple>
                     
-                     <img [src]="imageSrc" *ngIf="imageSrc" style="height: 150px; width: 150px;">
+                     <img [src]="imageSrc" *ngIf="imageSrc" 
+                     style="height: 150px; width: 150px;margin-top: 13px;">
                      <div *ngIf="GetInputStatues('Images')!.invalid" class="text-danger">
                         Images is a required field.
                     </div>
@@ -80,8 +88,8 @@
                     <label for="condition">Condition</label>
                     <select formControlName="Condition" id="condition" class="form-control">
                         <option disabled selected>Choose Condition</option>
-                        <option>New</option>
-                        <option>Used</option>
+                        <option value="true">New</option>
+                        <option value="false">Used</option>
                     </select>
                 </div>
                 
@@ -90,8 +98,8 @@
                         <select formControlName="Warranty"
                          id="warranty" class="form-control">
                             <option disabled selected>Yes/No</option>
-                            <option>Yes</option>
-                            <option>No</option>
+                            <option value="true">Yes</option>
+                            <option value="false">No</option>
                         </select>
                     </div>
                     
@@ -112,30 +120,26 @@
                     </h3>
                         <div class="form-group">
                             <label for="advertiserName">1:Name</label>
-                            <input formControlName="Name"
+                            <input formControlName="Name" [value]="userName"
                              id="advertiserName" type="text" class="form-control"
-                             placeholder="Advertiser Name">
-                             <div *ngIf="GetInputStatues('Name')!.invalid" class="text-danger">
+                             [placeholder]="userName">
+                             <!-- <div *ngIf="GetInputStatues('Name')!.invalid" class="text-danger">
                                 Name is a required field.
-                            </div>
+                            </div> -->
                              <label for="advertiserPhone">2:Phone Number</label>
-                            <input formControlName="Phone Number"
+                            <input formControlName="Phone Number" [value]="userPhoneNumber"
                               id="advertiserPhone" type="number" class="form-control"
-                             placeholder="09xxxxxxxx">
-                             <div *ngIf="GetInputStatues('Phone Number')!.invalid" class="text-danger">
+                             [placeholder]="userPhoneNumber">
+                             <!-- <div *ngIf="GetInputStatues('Phone Number')!.invalid" class="text-danger">
                                 Phone Number is a required field.
-                            </div>
+                            </div> -->
                              <label for="emirate">3:Choose Emirate</label>
                              <select formControlName="Choose Emirate"
                               id="emirate" class="form-control">
-                                 <option disabled selected>Select to choose emirate</option>
-                                 <option>Abu Dhabi</option>
-                                 <option>Dubai</option>
-                                 <option>Sharjah</option>
-                                 <option>Ras Al Khimah</option>
-                                 <option>Ajman</option>
-                                 <option>Fujairah</option>
-                                 <option>Umm Al Quwain</option>
+                              <option value="" disabled selected hidden>Select To Choose Emirates</option>
+                                 <option *ngFor="let city of cities" [value]="city.Id"
+                                 >{{city.Name}}</option>
+                                 
                              </select>
                              <div *ngIf="GetInputStatues('Choose Emirate')!.invalid"
                               class="text-danger">
@@ -150,6 +154,9 @@
                               class="text-danger">
                                 Adress in details is a required field.
                             </div>
+                        </div>
+                        <div *ngIf="errorAddingAdd" class="alert alert-danger">
+                            Please Fill All Fields, All Fields Are Required.
                         </div>
                     <div class="text-center mt-3">
                     <button type="submit" class="btn btn-primary"

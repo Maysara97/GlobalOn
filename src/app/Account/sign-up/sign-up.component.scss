@@ -2,6 +2,12 @@
 {
     margin-left: -35px;
 }
+.seePolicy{
+    text-decoration: underline !important;
+    font-weight: bolder !important;
+    cursor: pointer;
+    margin-left: 6px;
+}
 
 #left-div{
     height: 96vh
@@ -44,6 +50,7 @@
 .form-control{
     padding: 2rem 0.75rem !important;
 }
+
 
 #btn-sub{
     display: block;

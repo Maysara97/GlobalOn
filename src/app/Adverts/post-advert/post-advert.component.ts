@@ -1,7 +1,8 @@
+import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { AdvertService } from './../../Services/advert.service';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-post-advert',
@@ -9,6 +10,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./post-advert.component.scss']
 })
 export class PostAdvertComponent implements OnInit {
+  userName = localStorage.getItem('user');
+  userPhoneNumber = localStorage.getItem('userPhoneNumber');
 
   addAdvertForm = new FormGroup({
     'Category'          : new FormControl("", Validators.required),
@@ -24,47 +27,154 @@ export class PostAdvertComponent implements OnInit {
     'Phone Number'      : new FormControl("",Validators.required),
     'Choose Emirate'    : new FormControl("",Validators.required),
     'Adress-in-details' : new FormControl("",Validators.required),
-    'fileSource'        : new FormControl("",Validators.required)
+    'fileSource'        : new FormControl("")
   }); 
-  constructor(private adService : AdvertService , private router:Router) { }
+
+  form = new FormGroup({
+    'image' : new FormControl(""),
+    'Title' : new FormControl(""),
+    'UserId' : new FormControl(""),
+    'CatgId' : new FormControl(""),
+    'Price' : new FormControl(""),
+    'Condition' : new FormControl(""),
+    'Warranty' : new FormControl(""),
+    'Description' : new FormControl(""),
+    'cityId' : new FormControl(""),
+    'Address' : new FormControl(""),
+    'AdvertiseName' : new FormControl(""),
+    'PhoneNumber' : new FormControl(""),
+    'Links' : new FormControl(""),
+  })
+  ApiForm = new FormGroup({
+    'Title' : new FormControl(""),
+    'UserId' : new FormControl(""),
+    'CatgId' : new FormControl(""),
+    'Price' : new FormControl(""),
+    'Condition' : new FormControl(""),
+    'Warranty' : new FormControl(""),
+    'Description' : new FormControl(""),
+    'cityId' : new FormControl(""),
+    'Address' : new FormControl(""),
+    'AdvertiseName' : new FormControl(""),
+    'PhoneNumber' : new FormControl(""),
+    'Links' : new FormControl(""),
+  })
+ 
+  constructor(private adService : AdvertService , private router:Router , private formBuilder:FormBuilder) {
+    this.hasSubCategory = true;
+    this.ApiForm = this.formBuilder.group({
+      image:[null],Title:[null], UserId :[null],CatgId:[null],Price:[null],Condition:[null],Warranty:[null]
+      ,Description:[null],cityId:[],Address:[],AdvertiseName:[null],PhoneNumber:[null],Links:[null]
+    })
+   }
   imageSrc: any;
-  categories: any;
-  GetInputStatues(input:string){
-    
-    return this.addAdvertForm.get(input);
+  categories!: any[];
+  subCategory! :any[]; 
+  hasSubCategory : any;
+  cities!: any[];
+  errorAddingAdd: boolean = false;
+
+  GetInputStatues(input:string){  
+    return this.addAdvertForm.get(input); 
   }
 
   ngOnInit(): void {
+    this.fillCategories();
+    this.fillCities();
   }
   
   fillCategories(){
-    this.adService.getCategories().subscribe(response =>{
-      this.categories = response;
+    this.adService.getCategories().subscribe((response:any) =>{
+      this.categories = response.Data;    
     });
-    console.log(this.categories);
+  }
+  fillSubCategories(category:any){
+      for(var i=0 ; i < this.categories?.length ; i++){
+          if (category.value == this.categories[i].Id){
+            this.subCategory = this.categories[i].SubCategory;
+            this.hasSubCategory = true;
+          }
+          if(this.subCategory.length == 0){
+            this.hasSubCategory = 'disabled';
+          }
+      }
+  }
+  fillCities(){
+    this.adService.getCities().subscribe((response:any) => {
+      this.cities = response.Data;
+    })
   }
 
   onSelectedFile(event:any){
     const reader = new FileReader();
     if(event.target.files && event.target.files.length){
-      const [file] = event.target.files;
+      const file = (event.target as HTMLInputElement).files![0];
+      console.log(file)
+      this.ApiForm.patchValue({image : file});
+      this.ApiForm.updateValueAndValidity();
+      // to appear the chosen image in the form
       reader.readAsDataURL(file);
-
       reader.onload = () => {
-        this.imageSrc = reader.result as string;
-        this.addAdvertForm.patchValue({
-          fileSource : reader.result
-        });
+        this.imageSrc = reader.result as string
       };
     }
+   
 
   }
 
+  fillApiFormData(){
+    this.ApiForm.patchValue({
+      Title: this.addAdvertForm.controls["Title"].value,
+      UserId : localStorage.getItem('userId'),
+      CatgId : this.addAdvertForm.controls['Category'].value,
+      Price : this.addAdvertForm.controls['Price'].value,
+      Warranty : this.addAdvertForm.controls['Warranty'].value,
+      Condition : this.addAdvertForm.controls['Condition'].value,
+      Description : this.addAdvertForm.controls['Description'].value,
+      cityId : this.addAdvertForm.controls['Choose Emirate'].value,
+      Address : this.addAdvertForm.controls['Adress-in-details'].value,
+      AdvertiseName : this.addAdvertForm.controls['Name'].value,
+      PhoneNumber : this.addAdvertForm.controls['Phone Number'].value,
+      Links : this.addAdvertForm.controls['Video Links'].value,
+    })
+    this.ApiForm.updateValueAndValidity();
+    var formData = new FormData();
+    formData.append("image" , this.ApiForm.get('image')?.value)
+    formData.append("Title",this.addAdvertForm.controls['Title'].value)
+    formData.append("UserId",localStorage.getItem('userId')!)
+    formData.append("CatgId",this.addAdvertForm.controls['Category'].value)
+    formData.append("Price",this.addAdvertForm.controls['Price'].value)
+    formData.append("Warranty",this.addAdvertForm.controls['Warranty'].value)
+    formData.append("Condition",this.addAdvertForm.controls['Condition'].value)
+    formData.append("Description",this.addAdvertForm.controls['Description'].value)
+    formData.append("cityId",this.addAdvertForm.controls['Choose Emirate'].value)
+    formData.append("Address",this.addAdvertForm.controls['Adress-in-details'].value)
+    formData.append("AdvertiseName",this.addAdvertForm.controls['Name'].value)
+    formData.append("PhoneNumber",this.addAdvertForm.controls['Phone Number'].value)
+    formData.append("Links",this.addAdvertForm.controls['Video Links'].value)
+
+    return formData;
+    
+  }
+
   postAdd(addInfo:any){
-    // console.log(addInfo);
-    this.adService.adPost(addInfo.value);
-    this.fillCategories();
-    this.router.navigate(["/my-adds"]);
+    if(this.addAdvertForm.controls['Name'].value == "" ||this.addAdvertForm.controls['Name'].value == " "){
+      this.addAdvertForm.controls['Name'].setValue(this.userName);
+    }
+    if(this.addAdvertForm.controls['Phone Number'].value == "" ||this.addAdvertForm.controls['Phone Number'].value == " "){
+      this.addAdvertForm.controls['Phone Number'].setValue(this.userPhoneNumber);
+    }
+    this.errorAddingAdd = false;
+    if(this.addAdvertForm.status == "VALID"){
+      var ApiForm = this.fillApiFormData();
+
+     
+     this.adService.adPost(ApiForm);
+     
+    }
+    else{
+      this.errorAddingAdd = true;
+    }
   }
 
 

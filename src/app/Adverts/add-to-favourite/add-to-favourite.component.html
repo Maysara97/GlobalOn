@@ -1,0 +1,13 @@
+<button *ngIf="!isFavourite" (click)="addToFavourite()"
+ type="button" class="btn btn-outline-danger"
+ role="button" [hidden]="!isAuthinticated">
+    Add To Favourites
+    <i class="fa fa-star-o"></i>
+</button>
+
+<button *ngIf="isFavourite" (click)="removeFromFavourite()"
+ type="button" class="btn-lg btn-outline-success"
+ role="button" [hidden]="!isAuthinticated">
+    Favourite
+    <i class="fa fa-star"></i>
+</button>

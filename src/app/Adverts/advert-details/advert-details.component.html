@@ -1,0 +1,105 @@
+<app-home-header></app-home-header>
+<app-advert-first-view></app-advert-first-view>
+<!--------------------------------------------------------------------->
+
+<div class="container-fluid" 
+      style="background: white;
+      margin: 1em;
+      padding: 1em;
+      width: 96vw;
+      border-radius: 23px;">
+          <div class="row">
+            <div class="col-md-4 col-sm-12">
+                <div style="cursor: pointer;">
+                    <img  (click)="showImage(advertImage)"
+                     [src] = "advertImage" class="img-fluid img-thumbnail" id="bmw-ph">
+                </div>
+                   
+               
+              </div> 
+              <div class="col-md-8 col-sm-12 col-xs-12">
+             
+                    <div class="card-d4" style="margin-left: 1em;">
+                        <div class="tt-title">
+                      <p class="p-tt">{{advertTitle}}</p>
+                      <p class="p-tt">{{advertPrice}} EGP</p>
+                    </div>
+                      <p style="margin-right: 70px !important;" class="add-d4 text-left"><i class="fa fa-map-marker"></i> {{advertAdress}}</p>
+                      <div class="testdiv">
+
+                        <div class="cdiv-one text-center">
+                            <p>Category</p>
+                            <p><i class="fa fa-calendar"></i></p>
+                            <p>{{advertCategory}}</p>
+                          </div>
+                        <div class="cdiv-one text-center">
+                            <p>Condition</p>
+                            <p><i class="fa fa-hand-peace-o"></i></p>
+                            <p>{{advertCondition}}</p>
+                          </div>  
+
+                          <div class="cdiv-one text-center">
+                            <p>Warranty</p>
+                            <p><i class="fa fa-certificate"></i></p>
+                            <p>{{advertWarranty}}</p>
+                          </div>
+                          
+                          <div class="cdiv-one text-center">
+                            <p>Date</p>
+                            <p><i class="fa fa-calendar"></i></p>
+                            <p>{{advertDate}}</p>
+                          </div>
+                      </div>
+                      <div>
+                        <span class="name-d4"><i class="fa fa-user"></i> {{advertAdvertiserName}}</span>
+                      </div>
+                      <div class="form-row">
+                        <button type="button" class="btn btn-danger" style="margin-right: 8px;">
+                        0{{advertPhoneNumber}} <i class="fa fa-phone"></i></button>
+                      <button type="button" class="btn btn-danger">
+                        Send message <i class="fa fa-envelope"></i></button>
+                      </div>
+                      
+                      <app-add-to-favourite></app-add-to-favourite>
+                    </div>
+                  
+                  </div>          
+                  </div>
+     
+      </div>
+
+      <!-- thirdview -->
+      <div class="container-fluid">
+        <div class="row">
+          <!-- <div class="col-md-6 col-sm-12">
+            <div class="view3-d4">
+              <div> 
+                <p><i class="fa fa-car"></i> Body Condition</p>
+                <p><i class="fa fa-user-tie"></i> Seller Type</p>
+                <p><i class="fa fa-wrench"></i> Mechanical Condition</p>
+                <p><i class="fa fa-tint"></i> Color</p>
+                <p><i class="fa fa-tools"></i> Cylinders</p>
+                <p><i class="fa fa-horse-head"></i> HorsePower</p>
+                <p><i class="fa fa-gas-pump"></i> Fuel Type</p>
+              </div>
+              <div> 
+                <p>Perfect inside and out</p>
+                <p>Owner</p>
+                <p>Perfect inside and put</p>
+                <p>White</p>
+                <p>4</p>
+                <p>150 - 200 HP</p>
+                <p>gasoline</p>
+              </div>
+              
+            </div>
+          </div> -->
+          <div class="col-md-6 col-sm-12">
+            <div class="view3-d4-div2">
+                <h4>Description</h4>
+                <p>{{advertDescription}}  </p>
+                <p>WhatsApp : {{advertPhoneNumber}} </p>
+            </div>
+          </div>
+        </div>
+      </div>

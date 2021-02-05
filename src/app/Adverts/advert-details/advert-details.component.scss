@@ -1,0 +1,172 @@
+#bmw-ph{
+    height: 70vh;
+    border-radius: 20px;
+    width: 40vw;
+  }
+
+  .p-tt{
+      font-size: 2.5em;
+      font-weight: 600;
+      font-weight: 500;
+      color: #ba212c;
+  }
+
+  .add-d4,.name-d4{   
+      font-size: 1.5em !important;
+      font-weight: 300 !important;
+      position: relative;
+      color: #9b9b9b;
+      left: -8em;
+  }
+
+  .testdiv{
+      display: flex;
+  }
+
+  .cdiv-one{
+      background: white;
+      padding: 6px 16px 0px 16px;
+      border-radius: 10px;
+      margin: 0 10px 10px 10px;
+  }
+
+  .cdiv-one p svg{
+      font-size: 3em;
+  }
+
+  .cdiv-one p{
+      margin: 1px;
+      color: #9b9b9b;
+      
+  }.card-child-one{
+      width: 50%;
+      
+      height: 25vh;
+      display: flex;
+      
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .card-d4{
+  
+      
+    
+      display: flex;
+      margin-left: 7em !important;
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .tt-title{
+      display: flex;
+      align-items: flex-end !important;
+  }
+
+  .p-tt:first-of-type{
+      margin-right: 3em;
+  }
+
+  .p-tt:last-of-type{
+      margin-left: 3em;
+  }
+
+  .btn-danger{
+      width: 15em;
+      padding: 12px 8px;
+      margin-top: 1em;
+      margin-bottom: 1em;
+  }
+
+  .view3-d4{
+      display: flex;
+      justify-content: space-around;
+      background-color: white;
+      border-radius: 25px;
+      padding: 10px 0;
+      margin-top: 1em;
+      margin-bottom: 1em;
+  }
+
+  .view3-d4-div2{
+      margin-top: 1em;
+      margin-bottom: 1em;
+      background-color: white;
+      border-radius: 25px;
+      padding: 15px 10px;
+  }
+
+  .view3-d4-div2 h4{
+      color: crimson;
+  }
+
+  .view3-d4-div2 p{
+      color: #545252;
+      font-weight: 600;
+      line-height: 2.5em;
+  }
+
+
+  .view3-d4 div p {
+      color:#545252;
+      margin-top: 1em;
+      margin-bottom: 1em;
+  }
+
+  .view3-d4 div p svg{
+      color:#a2a1a1;
+      font-size: 1.25em;
+  }
+
+  .view3-d4 div:nth-of-type(2) p{
+      color:#545252
+  }
+
+  @media (max-width:1100px) and (min-width:767px){
+      .p-tt:first-of-type{
+          margin-right: 2em;
+          font-size: 1.8em;
+      }
+      
+      .p-tt:last-of-type{
+          margin-left: 2em;
+          font-size: 1.8em;
+      }
+      .add-d4,.name-d4{   
+          left: -3em;
+      }
+      
+  }
+
+  @media (max-width:992px) and (min-width:767px){
+      .view3-d4-div2 p {
+
+          line-height: 1.7em;
+      }
+  }
+
+  @media (max-width:767px){
+      #bmw-ph{
+          height: 70vh;
+          border-radius: 20px;
+          width: 100%;
+      }
+      .tt-title{
+          margin-left: -5em;
+      }
+      .p-tt:first-of-type{
+          margin-right: 1em;
+          font-size: 2em;
+      }
+      
+      .p-tt:last-of-type{
+          margin-left: 1em;
+          font-size: 2em;
+      }
+      .testdiv{
+          margin-left: -7em;
+      }
+      .btn-danger{
+          margin-left: -8em;
+      }
+  }
