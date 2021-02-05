@@ -1,0 +1,57 @@
+<app-home-header></app-home-header>
+<div class="container">
+    <div class="main-cont">        
+        <h1 class= "slide-tt text-left text-center justify-content-center">
+          Most Popular in {{categoryName}}</h1>
+        <hr class="textUnderline">
+        <div class="second-main-cont">
+          <div class="container-fliud">
+            <div *ngIf="noData" style="margin-left: 17%;">
+              <h1>No Adverts For This Category Till Now...</h1>
+            </div>
+              <div class="row">
+                <div class="col-md-4 mb-3" *ngFor="let advert of categoryAdverts">
+                  <div class="card-deck" (click)="showAdvertDetails(advert)">
+                    <div class="card" >
+                      <img class="img-fluid" *ngIf="advert.Pictures.length == 0" 
+                      src="assets/Images/no-image.jpg">
+                        <img class="img-fluid" *ngIf="advert.Pictures.length > 0" 
+                        [src]="advert.Pictures[0].URL">
+                      <div class="card-body">
+                        <div class="card-p" style="height:148px; width: auto;">
+                          <div class="card-child-one d-flex">
+                            <p class="lead" style="font-size: 1.1rem;">{{advert.Title}}</p>
+                            <p class="p-fix"><i class="fa fa-map-marker"></i>&nbsp;{{advert.Address}}</p>
+                            <div>
+                              <span><i class="fa fa-user"></i>&nbsp;{{advert.AdvertiseName}}</span>
+                            </div>
+                          </div>
+                          <div class="card-child-two">
+                            <p class="lead">{{advert.Price}} EGP</p> 
+                            <p> <i class="fa fa-clock-o"></i>&nbsp;{{editDate(advert.CreationDate)}}</p>
+                            
+                          </div>
+                        </div>
+                      <div class="card-footer justify-content-center align-content-center">
+                        <button  type="button" class="btn btn-danger">
+                          Send message <i class="fa fa-envelope"></i></button>
+                        <button style="float: right;"  type="button" class="btn btn-danger">
+                          Call Me <i class="fa fa-phone"></i></button>
+                      </div>
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+          </div>
+          </div>
+          <div class="d-flex justify-content-end p-2 w-100 mt-5" *ngIf="!noData">
+            <mat-toolbar-row>
+                <mat-paginator [length]="totalCount" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+                    (page)="handleOnPageChange($event)">
+                </mat-paginator>
+            </mat-toolbar-row>
+        </div>
+          </div>    
+</div>
+</div>

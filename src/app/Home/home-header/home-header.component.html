@@ -35,22 +35,20 @@
           <div *ngIf="user!=null" class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button"
              id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="name-title-d5"><i class="fa fa-user"></i> {{user}}  </span>
+                <span class="name-title-d5"><img [src]="imgSrc" style="width: 25px; height: auto;"> {{user}}  </span>
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item  active-item" href="#"><i class="fa fa-user"></i> Profile</a>
+              <a class="dropdown-item  active-item" href="/my-profile"><i class="fa fa-user"></i> Profile</a>
               <a class="dropdown-item" href="#"><i class="fa fa-bell"></i> Notification</a>
               <a class="dropdown-item" [routerLink]="['/my-adds']">
                 <i class="fa fa-bullhorn"></i> My Ads</a>
-              <a class="dropdown-item" href="#"><i class="fa fa-heart"></i> My Favourite</a>
+              <a class="dropdown-item" href="/my-favourites"><i class="fa fa-heart"></i> My Favourite</a>
               <a class="dropdown-item" href="#"><i class="fa fa-comments"></i> Chats</a>
               <a class="dropdown-item" href="#"><i class="fa fa-cogs"></i> Setting</a>
               <a class="dropdown-item" (click)="Logout()" style="cursor: pointer">
                 <span class="fa fa-sign-out"></span> Logout</a>
             </div>
           </div>
-        
-        
       </ul>
 
     </div>
@@ -67,11 +65,14 @@
     </button>
   
     <div class="collapse navbar-collapse" id="navbar2">
-      <ul class="navbar-nav mr-auto" id="second-nav">
-        <li class="nav-item">
-          <p><i class="fa fa-motorcycle"></i> Motors</p>
+      <ul class="navbar-nav mr-auto" id="second-nav" >
+        <li class="nav-item"  *ngFor="let cat of categoriesArray" [value]="cat.Id" style="font-size: 15px;"
+        style="cursor: pointer;" (click)="goToCategory(cat)">
+          <p><img [src]="cat.IconURL" style="width: 16px; height: auto;">
+             {{cat.Name}}
+            </p>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <p><i class="fa fa-graduation-cap"></i> Learning</p>
         </li>
         <li class="nav-item">
@@ -97,11 +98,12 @@
         </li>
         <li class="nav-item">
           <p><i class="fa fa-paw"></i> Animals</p>
-        </li>
-        <li class="nav-item">
-          <button id="snb" (click)="goToAdverts()">Post An Ads</button>
-        </li>
+        </li> -->
+        <br><br>
+        
       </ul>
-     
+      <div class="nav-item">
+        <button id="snb" (click)="goToAdverts()">Post An Ads</button>
+      </div>
     </div>
   </nav>

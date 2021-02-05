@@ -1,0 +1,64 @@
+<div id="second-ads" class="container text-center my-3">
+    <h1 class= "slide-tt text-left">Most Popular in Adverts</h1>
+    <div class="row mx-auto my-auto">
+        <div id="recipeCarousel2" class="w-100">
+          
+          <div id="recipeCarousel2" class="carousel slide w-100" data-ride="carousel">
+            <div class="carousel-inner w-100" role="listbox" >
+            <div class="second-main-cont">
+              <div class="container-fliud">
+                <div *ngIf="noData" style="margin-left: 17%;">
+                  <h1>No Adverts Here Till Now...</h1>
+                </div>
+                  <div class="row">  
+                    <div class="col-md-3" *ngFor="let advert of commonAdverts">
+                      <div class="card-deck" (click)="showAdvertDetails(advert)">
+                        <div class="card" >
+                          <img class="img-fluid" *ngIf="advert.Pictures.length == 0" src="assets/Images/no-image.jpg">
+                            <img class="img-fluid" *ngIf="advert.Pictures.length > 0" [src]="advert.Pictures[0].URL">
+                          <div class="card-body">
+                            <div class="card-p" style="height:148px; width: auto;">
+                              <div class="card-child-one d-flex">
+                                <p class="lead" style="font-size: 1.1rem;">{{advert.Title}}</p>
+                                <p class="p-fix"><i class="fa fa-map-marker"></i>&nbsp;{{advert.Address}}</p>
+                                <div>
+                                  <span><i class="fa fa-user"></i>&nbsp;{{advert.AdvertiseName}}</span>
+                                </div>
+                              </div>
+                              <div class="card-child-two">
+                                <p class="lead">{{advert.Price}} EGP</p> 
+                                <p> <i class="fa fa-clock-o"></i>&nbsp;{{editDate(advert.CreationDate)}}</p>
+                                
+                              </div>
+                            </div>
+                          <div class="card-footer" style="align-items: flex-start; display: flex;">
+                            <button style="margin-right: 3px; width: 152px; font-size: 12px;" type="button" class="btn btn-danger">Send message <i class="fa fa-envelope"></i></button>
+                            <button style="float: right; font-size: 12px; width: 106px;" type="button" class="btn btn-danger">Call Me <i class="fa fa-phone"></i></button>
+                          </div>
+                        </div>
+                        
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+              </div>       
+              </div>
+              </div>
+              <span *ngIf="isPrev" (click)="navigatePrev()"
+               class="carousel-control-prev w-auto"  role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon bg-dark border border-dark rounded-circle"
+                 aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </span>
+            <span *ngIf="isNext"  (click)="navigateNext()" 
+            class="carousel-control-next w-auto"  role="button" data-slide="next">
+                <span class="carousel-control-next-icon bg-dark border border-dark rounded-circle"
+                 aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </span>
+            </div>
+          
+            
+        </div>
+    </div>
+</div>
